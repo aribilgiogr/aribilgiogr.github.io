@@ -1,0 +1,257 @@
+/* ATS-Friendly CV Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    font-size: 11pt;
+    line-height: 1.5;
+    color: #000000;
+    background-color: #ffffff;
+    max-width: 8.5in;
+    margin: 0 auto;
+    padding: 0.5in;
+}
+
+.container {
+    background: white;
+}
+
+/* Header Styles */
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #000000;
+}
+
+.header h1 {
+    font-size: 24pt;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #000000;
+    text-transform: uppercase;
+}
+
+.header .title {
+    font-size: 12pt;
+    margin-bottom: 10px;
+    color: #333333;
+}
+
+.contact {
+    font-size: 10pt;
+    color: #333333;
+}
+
+.contact p {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.contact p::after {
+    content: " | ";
+    margin-left: 10px;
+}
+
+.contact p:last-child::after {
+    content: "";
+}
+
+/* Section Styles */
+.section {
+    margin-bottom: 20px;
+    page-break-inside: avoid;
+}
+
+.section h2 {
+    font-size: 14pt;
+    font-weight: bold;
+    color: #000000;
+    text-transform: uppercase;
+    border-bottom: 1px solid #000000;
+    padding-bottom: 3px;
+    margin-bottom: 10px;
+}
+
+.section p {
+    margin-bottom: 10px;
+    text-align: justify;
+}
+
+/* Skills Section */
+.skills {
+    display: table;
+    width: 100%;
+}
+
+.skill-column {
+    display: table-cell;
+    width: 33.33%;
+    vertical-align: top;
+    padding-right: 15px;
+}
+
+.skill-column ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.skill-column li {
+    margin-bottom: 5px;
+    padding-left: 15px;
+    position: relative;
+}
+
+.skill-column li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+}
+
+/* Experience Section */
+.experience {
+    margin-bottom: 18px;
+    page-break-inside: avoid;
+}
+
+.job-header {
+    display: table;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.job-header > div {
+    display: table-cell;
+    width: 70%;
+}
+
+.job-header .date {
+    display: table-cell;
+    width: 30%;
+    text-align: right;
+    vertical-align: top;
+    font-style: italic;
+    color: #333333;
+}
+
+.experience h3 {
+    font-size: 12pt;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 2px;
+}
+
+.company {
+    font-size: 11pt;
+    color: #333333;
+    margin-bottom: 5px;
+}
+
+.achievements {
+    margin-left: 20px;
+    margin-top: 5px;
+}
+
+.achievements li {
+    margin-bottom: 4px;
+}
+
+/* Education Section */
+.education {
+    margin-bottom: 15px;
+    page-break-inside: avoid;
+}
+
+.education p {
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+/* Certification Section */
+.certification {
+    margin-bottom: 12px;
+    page-break-inside: avoid;
+}
+
+.certification h3 {
+    font-size: 11pt;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 2px;
+}
+
+.certification p {
+    font-size: 10pt;
+    color: #333333;
+    margin: 0;
+}
+
+/* Print Styles */
+@media print {
+    body {
+        margin: 0;
+        padding: 0.5in;
+        font-size: 10pt;
+    }
+    
+    .section {
+        page-break-inside: avoid;
+    }
+    
+    .experience,
+    .education,
+    .certification {
+        page-break-inside: avoid;
+    }
+    
+    .header {
+        border-bottom: 2px solid #000000;
+    }
+}
+
+/* Responsive Design for Screen View */
+@media screen and (max-width: 768px) {
+    body {
+        padding: 20px;
+    }
+    
+    .skill-column {
+        display: block;
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    
+    .job-header {
+        display: block;
+    }
+    
+    .job-header > div,
+    .job-header .date {
+        display: block;
+        width: 100%;
+        text-align: left;
+    }
+    
+    .contact p {
+        display: block;
+        margin: 5px 0;
+    }
+    
+    .contact p::after {
+        content: "";
+    }
+}
+
+/* ATS-Friendly Considerations */
+/* - No background images or colors */
+/* - Standard fonts only */
+/* - No tables for layout (using CSS display properties instead) */
+/* - Clear hierarchical structure */
+/* - No graphics or icons */
+/* - Simple, semantic HTML */
+/* - Black text on white background */
+/* - Standard bullet points */
