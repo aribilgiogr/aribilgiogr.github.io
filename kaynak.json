@@ -1,0 +1,120 @@
+{
+    "about": {
+        "name": "İlker Turan",
+        "titles": [
+            "Yazılım Çözüm Geliştirici",
+            "Teknik Eğitmen",
+            "Proje Yöneticisi"
+        ],
+        "summary": "Yazılım geliştirme ve teknik eğitim alanında deneyimli bir profesyonel olarak, çeşitli projelerde liderlik yapma ve yenilikçi çözümler üretme konusunda uzmanım. Eğitim ve mentorluk konularında da aktif olarak çalışmaktayım.",
+        "location": "İstanbul, Türkiye",
+        "profilePicture": "https://placehold.co/150x150",
+        "contact": {
+            "email": "info@example.com",
+            "website": "https://www.example.com",
+            "socials": {
+                "linkedin": "https://www.linkedin.com/in/ilker-turan",
+                "github": "https://www.github.com/ilker-turan",
+                "medium": "https://medium.com/@ilker-turan"
+            }
+        }
+    },
+    "skills": {
+        "languages": [
+            "JavaScript",
+            "Python",
+            "Java",
+            "C#"
+        ],
+        "frameworks": [
+            "React",
+            "Node.js",
+            "Django",
+            "Spring Boot",
+            ".NET Core (8.0, 10.0)",
+            ".Net Framework (4.8)"
+        ],
+        "tools": [
+            "Git",
+            "Docker",
+            "Kubernetes"
+        ],
+        "databases": [
+            "MySQL",
+            "PostgreSQL",
+            "MongoDB",
+            "Redis",
+            "SQL Server"
+        ],
+        "softSkills": [
+            "Problem Solving",
+            "Team Leadership",
+            "Communication",
+            "Time Management"
+        ],
+        "certifications": [
+            "AWS Certified Solutions Architect",
+            "Certified Scrum Master",
+            "Microsoft Certified: Azure Developer Associate"
+        ]
+    },
+    "experience": [
+        {
+            "company": "Tech Solutions Inc.",
+            "role": "Senior Software Engineer",
+            "duration": "Jan 2020 - Present"
+        },
+        {
+            "company": "Innovatech Ltd.",
+            "role": "Software Developer",
+            "duration": "Jun 2016 - Dec 2019"
+        }
+    ],
+    "education": [
+        {
+            "institution": "Istanbul Technical University",
+            "degree": "B.Sc. in Computer Engineering",
+            "duration": "2012 - 2016"
+        }
+    ],
+    "projects": [
+        {
+            "name": "E-commerce Platform",
+            "description": "Developed a scalable e-commerce platform using React and Node.js, integrating payment gateways and user authentication.",
+            "technologies": [
+                "React",
+                "Node.js",
+                "MongoDB"
+            ]
+        },
+        {
+            "name": "Real-time Chat Application",
+            "description": "Built a real-time chat application with WebSocket support, enabling instant messaging between users.",
+            "technologies": [
+                "JavaScript",
+                "Node.js",
+                "Socket.io"
+            ]
+        }
+    ],
+    "blog": [
+        {
+            "title": "Understanding Asynchronous JavaScript",
+            "url": "https://medium.com/@ilker-turan/understanding-asynchronous-javascript-1234567890",
+            "tags": [
+                "JavaScript",
+                "Asynchronous Programming",
+                "Web Development"
+            ]
+        },
+        {
+            "title": "A Guide to Docker for Developers",
+            "url": "https://medium.com/@ilker-turan/a-guide-to-docker-for-developers-0987654321",
+            "tags": [
+                "Docker",
+                "DevOps",
+                "Containerization"
+            ]
+        }
+    ]
+}

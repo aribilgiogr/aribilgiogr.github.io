@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="shortcut icon" href="apple.png" type="image/x-icon">
+</head>
+
+<body class="bg-light">
+    <main class="container my-5" id="root">
+        <h1 class="text-center text-muted display-1">Yükleniyor...</h1>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script>
+        const kaynak_yolu = "kaynak.json"
+        const root = document.getElementById("root")
+        // GET işlemi belirtilen kaynak_yoluna bir okuma talebi gönderir, karşı taraftan bir cevap bekler.
+        fetch(kaynak_yolu)
+            .then(res => res.json()) // JSON metnini javascript nesnesine dönüştürür.
+            .then(data => {
+                root.innerHTML = ""
+
+                // ---- HEADER / ABOUT ----
+                root.innerHTML += `
+                <header class="text-center py-5 mb-5 shadow-sm bg-white bg-gradient rounded-3">
+                    <img src="${data.about.profilePicture}" alt="${data.about.name}"
+                        class="rounded-circle border border-3 border-primary mb-3" width="150" height="150">
+                    <h1 class="mb-1">${data.about.name}</h1>
+                    <p class="lead text-muted mb-2">${data.about.titles.join(" • ")}</p>
+                    <p class="text-secondary mb-3"><i class="bi"></i>📍 ${data.about.location}</p>
+                    <p class="col-lg-8 col-md-10 mx-auto">${data.about.summary}</p>
+                    <div class="d-flex justify-content-center gap-2 flex-wrap mt-3">
+                        <a href="mailto:${data.about.contact.email}" class="btn btn-outline-primary btn-sm">E-posta</a>
+                        <a href="${data.about.contact.website}" target="_blank" class="btn btn-outline-primary btn-sm">Web Sitesi</a>
+                        <a href="${data.about.contact.socials.linkedin}" target="_blank" class="btn btn-outline-primary btn-sm">LinkedIn</a>
+                        <a href="${data.about.contact.socials.github}" target="_blank" class="btn btn-outline-primary btn-sm">GitHub</a>
+                        <a href="${data.about.contact.socials.medium}" target="_blank" class="btn btn-outline-primary btn-sm">Medium</a>
+                    </div>
+                </header>`
+
+                // ---- SKILLS ----
+                const skillBadges = (arr, badgeClass) =>
+                    arr.map(s => `<span class="badge ${badgeClass} me-1 mb-1 p-2">${s}</span>`).join("")
+
+                root.innerHTML += `
+                <section class="mb-5">
+                    <h2 class="border-bottom pb-2 mb-4">Yetenekler</h2>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card h-100 shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title">Diller</h5>
+                                    <div>${skillBadges(data.skills.languages, "bg-primary")}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100 shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title">Framework'ler</h5>
+                                    <div>${skillBadges(data.skills.frameworks, "bg-success")}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100 shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title">Araçlar</h5>
+                                    <div>${skillBadges(data.skills.tools, "bg-secondary")}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100 shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title">Veritabanları</h5>
+                                    <div>${skillBadges(data.skills.databases, "bg-info text-dark")}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100 shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title">Kişisel Beceriler</h5>
+                                    <div>${skillBadges(data.skills.softSkills, "bg-warning text-dark")}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100 shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title">Sertifikalar</h5>
+                                    <ul class="list-group list-group-flush">
+                                        ${data.skills.certifications.map(c => `<li class="list-group-item">🏅 ${c}</li>`).join("")}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>`
+
+                // ---- EXPERIENCE ----
+                root.innerHTML += `
+                <section class="mb-5">
+                    <h2 class="border-bottom pb-2 mb-4">Deneyim</h2>
+                    <div class="list-group shadow-sm">
+                        ${data.experience.map(e => `
+                            <div class="list-group-item">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">${e.role}</h5>
+                                    <small class="text-muted">${e.duration}</small>
+                                </div>
+                                <p class="mb-0 text-muted">${e.company}</p>
+                            </div>`).join("")}
+                    </div>
+                </section>`
+
+                // ---- EDUCATION ----
+                root.innerHTML += `
+                <section class="mb-5">
+                    <h2 class="border-bottom pb-2 mb-4">Eğitim</h2>
+                    <div class="list-group shadow-sm">
+                        ${data.education.map(ed => `
+                            <div class="list-group-item">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">${ed.degree}</h5>
+                                    <small class="text-muted">${ed.duration}</small>
+                                </div>
+                                <p class="mb-0 text-muted">${ed.institution}</p>
+                            </div>`).join("")}
+                    </div>
+                </section>`
+
+                // ---- PROJECTS ----
+                root.innerHTML += `
+                <section class="mb-5">
+                    <h2 class="border-bottom pb-2 mb-4">Projeler</h2>
+                    <div class="row g-4">
+                        ${data.projects.map(p => `
+                            <div class="col-md-6">
+                                <div class="card h-100 shadow-sm">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${p.name}</h5>
+                                        <p class="card-text">${p.description}</p>
+                                        <div>${p.technologies.map(t => `<span class="badge bg-dark me-1 mb-1">${t}</span>`).join("")}</div>
+                                    </div>
+                                </div>
+                            </div>`).join("")}
+                    </div>
+                </section>`
+
+                // ---- BLOG ----
+                root.innerHTML += `
+                <section class="mb-5">
+                    <h2 class="border-bottom pb-2 mb-4">Blog Yazıları</h2>
+                    <div class="row g-4">
+                        ${data.blog.map(b => `
+                            <div class="col-md-6">
+                                <div class="card h-100 shadow-sm">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${b.title}</h5>
+                                        <div class="mb-3">${b.tags.map(t => `<span class="badge bg-light text-dark border me-1 mb-1">#${t}</span>`).join("")}</div>
+                                        <a href="${b.url}" target="_blank" class="btn btn-primary btn-sm">Yazıyı Oku</a>
+                                    </div>
+                                </div>
+                            </div>`).join("")}
+                    </div>
+                </section>`
+            })
+            .catch(err => {
+                root.innerHTML = `<div class="alert alert-danger text-center" role="alert">Kaynak yüklenirken bir hata oluştu: ${err}</div>`
+                console.error("Kaynaktan Okuma Hatası:", err)
+            })
+    </script>
+</body>
+
+</html>
